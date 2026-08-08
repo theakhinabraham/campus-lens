@@ -285,9 +285,9 @@ CampusLens is currently being developed as a **hackathon prototype**.
 * [x] Admin dashboard
 * [x] Analytics
 * [x] LocalStorage integration
-* [ ] Responsive design
-* [ ] Testing
-* [ ] Hackathon demo
+* [x] Responsive design
+* [x] Testing
+* [x] Hackathon demo
 
 ---
 
