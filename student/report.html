@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Report an Issue — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- =========================================
+             SIDEBAR
+             ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Overview
+                </div>
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">◉</span>
+                        Dashboard
+                    </a>
+
+
+                    <a
+                        href="campus.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">⌖</span>
+                        Campus
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">⚠</span>
+                        Issues
+                    </a>
+
+
+                    <a
+                        href="reports.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">✓</span>
+                        My Reports
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">↪</span>
+                    Exit
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN
+             ========================================= -->
+
+        <main class="app-main">
+
+
+            <!-- Header -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        Report an Issue
+                    </h1>
+
+                    <p>
+                        Help make your campus better.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AA
+                        </div>
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Akhin Abraham
+                            </span>
+
+                            <span class="user-role">
+                                Student
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 REPORT FORM
+                 ========================================= -->
+
+            <section class="page-content">
+
+
+                <div class="report-page">
+
+
+                    <!-- Introduction -->
+
+                    <div class="report-intro">
+
+                        <a
+                            href="dashboard.html"
+                            class="back-link"
+                        >
+                            ← Back to dashboard
+                        </a>
+
+                        <h2>
+                            What's happening?
+                        </h2>
+
+                        <p>
+                            Tell us about a problem you've noticed
+                            on campus. Your report can help others
+                            confirm the issue and get it resolved.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Form -->
+
+                    <form
+                        class="report-form"
+                        id="reportForm"
+                    >
+
+
+                        <!-- Category -->
+
+                        <div class="form-group">
+
+                            <label for="category">
+                                What type of issue is this?
+                            </label>
+
+                            <select
+                                id="category"
+                                name="category"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a category
+                                </option>
+
+                                <option value="infrastructure">
+                                    Infrastructure
+                                </option>
+
+                                <option value="wifi">
+                                    Wi-Fi / Network
+                                </option>
+
+                                <option value="cleanliness">
+                                    Cleanliness
+                                </option>
+
+                                <option value="water">
+                                    Water & Sanitation
+                                </option>
+
+                                <option value="electricity">
+                                    Electricity
+                                </option>
+
+                                <option value="ac">
+                                    Air Conditioning
+                                </option>
+
+                                <option value="cafeteria">
+                                    Cafeteria
+                                </option>
+
+                                <option value="accessibility">
+                                    Accessibility
+                                </option>
+
+                                <option value="other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Location -->
+
+                        <div class="form-group">
+
+                            <label for="location">
+                                Where is the issue?
+                            </label>
+
+                            <select
+                                id="location"
+                                name="location"
+                                required
+                            >
+
+                                <option value="">
+                                    Select a location
+                                </option>
+
+                                <option value="block-a">
+                                    Block A
+                                </option>
+
+                                <option value="block-b">
+                                    Block B
+                                </option>
+
+                                <option value="block-c">
+                                    Block C
+                                </option>
+
+                                <option value="library">
+                                    Library
+                                </option>
+
+                                <option value="cafeteria">
+                                    Cafeteria
+                                </option>
+
+                                <option value="auditorium">
+                                    Auditorium
+                                </option>
+
+                                <option value="sports">
+                                    Sports Complex
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Specific location -->
+
+                        <div class="form-group">
+
+                            <label for="specificLocation">
+
+                                Specific location
+                                <span class="optional">
+                                    Optional
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="specificLocation"
+                                name="specificLocation"
+                                placeholder="e.g. Room 204, second floor"
+                            >
+
+                        </div>
+
+
+                        <!-- Title -->
+
+                        <div class="form-group">
+
+                            <label for="title">
+                                Give the issue a short title
+                            </label>
+
+                            <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                placeholder="e.g. Wi-Fi not working in Block C"
+                                maxlength="80"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Description -->
+
+                        <div class="form-group">
+
+                            <label for="description">
+                                Tell us more
+                            </label>
+
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows="5"
+                                maxlength="500"
+                                placeholder="Describe what is happening..."
+                                required
+                            ></textarea>
+
+                            <div class="character-count">
+                                <span id="characterCount">0</span>
+                                / 500
+                            </div>
+
+                        </div>
+
+
+                        <!-- Severity -->
+
+                        <div class="form-group">
+
+                            <label>
+                                How serious is the issue?
+                            </label>
+
+                            <div class="severity-options">
+
+
+                                <label class="severity-option">
+
+                                    <input
+                                        type="radio"
+                                        name="severity"
+                                        value="low"
+                                        required
+                                    >
+
+                                    <span class="severity-card">
+
+                                        <span class="severity-dot low"></span>
+
+                                        <span>
+                                            <strong>Low</strong>
+                                            <small>
+                                                Minor inconvenience
+                                            </small>
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+
+                                <label class="severity-option">
+
+                                    <input
+                                        type="radio"
+                                        name="severity"
+                                        value="medium"
+                                    >
+
+                                    <span class="severity-card">
+
+                                        <span class="severity-dot medium"></span>
+
+                                        <span>
+                                            <strong>Medium</strong>
+                                            <small>
+                                                Affecting students
+                                            </small>
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+
+                                <label class="severity-option">
+
+                                    <input
+                                        type="radio"
+                                        name="severity"
+                                        value="high"
+                                    >
+
+                                    <span class="severity-card">
+
+                                        <span class="severity-dot high"></span>
+
+                                        <span>
+                                            <strong>High</strong>
+                                            <small>
+                                                Urgent attention needed
+                                            </small>
+                                        </span>
+
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Photo -->
+
+                        <div class="form-group">
+
+                            <label for="photo">
+
+                                Add a photo
+                                <span class="optional">
+                                    Optional
+                                </span>
+
+                            </label>
+
+                            <label
+                                class="upload-box"
+                                for="photo"
+                            >
+
+                                <span class="upload-icon">
+                                    ↑
+                                </span>
+
+                                <span>
+                                    <strong>
+                                        Click to upload
+                                    </strong>
+
+                                    <small>
+                                        PNG, JPG up to 5MB
+                                    </small>
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="file"
+                                id="photo"
+                                name="photo"
+                                accept="image/png,image/jpeg"
+                                hidden
+                            >
+
+                        </div>
+
+
+                        <!-- Submit -->
+
+                        <div class="form-actions">
+
+                            <a
+                                href="dashboard.html"
+                                class="btn btn-secondary"
+                            >
+                                Cancel
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Submit Report
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/student/report.js"></script>
+
+</body>
+
+</html>
