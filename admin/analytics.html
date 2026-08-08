@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Analytics — CampusLens</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/pages.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <span class="brand-mark">
+                C
+            </span>
+
+            <span>
+                CampusLens
+            </span>
+
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-section-title">
+                Overview
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="dashboard.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">◉</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="issues.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">⚠</span>
+                    Issues
+                </a>
+
+
+                <a
+                    href="analytics.html"
+                    class="sidebar-link active"
+                >
+                    <span class="sidebar-icon">▥</span>
+                    Analytics
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="../index.html"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">↪</span>
+                Exit
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="app-main">
+
+
+        <!-- HEADER -->
+
+        <header class="app-header">
+
+            <div class="header-title">
+
+                <h1>
+                    Analytics
+                </h1>
+
+                <p>
+                    Understand what's happening across campus.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="notification-button"
+                    aria-label="Notifications"
+                >
+                    ♢
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="user-avatar">
+                        AD
+                    </div>
+
+                    <div class="user-info">
+
+                        <span class="user-name">
+                            Campus Admin
+                        </span>
+
+                        <span class="user-role">
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             ANALYTICS CONTENT
+             ========================================= -->
+
+        <section class="page-content">
+
+
+            <div class="analytics-page">
+
+
+                <!-- =================================
+                     SUMMARY
+                     ================================= -->
+
+                <div class="analytics-summary">
+
+
+                    <div class="analytics-stat">
+
+                        <span class="analytics-stat-label">
+                            Total Issues
+                        </span>
+
+                        <strong
+                            id="totalIssues"
+                            class="analytics-stat-value"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="analytics-stat">
+
+                        <span class="analytics-stat-label">
+                            Active Issues
+                        </span>
+
+                        <strong
+                            id="activeIssues"
+                            class="analytics-stat-value"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="analytics-stat">
+
+                        <span class="analytics-stat-label">
+                            Resolved
+                        </span>
+
+                        <strong
+                            id="resolvedIssues"
+                            class="analytics-stat-value"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="analytics-stat">
+
+                        <span class="analytics-stat-label">
+                            High Priority
+                        </span>
+
+                        <strong
+                            id="highPriorityIssues"
+                            class="analytics-stat-value"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     HEALTH SCORE
+                     ================================= -->
+
+                <div class="analytics-health-card">
+
+                    <div>
+
+                        <span class="analytics-section-label">
+                            Campus Health
+                        </span>
+
+                        <h2>
+                            <span id="healthScore">
+                                —
+                            </span>
+                            <small>/ 100</small>
+                        </h2>
+
+                        <p id="healthMessage">
+                            Calculating campus health...
+                        </p>
+
+                    </div>
+
+
+                    <div class="health-ring">
+
+                        <div
+                            class="health-ring-value"
+                            id="healthRingValue"
+                        >
+                            —
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     CHART GRID
+                     ================================= -->
+
+                <div class="analytics-grid">
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+
+                                <h3>
+                                    Issues by Category
+                                </h3>
+
+                                <p>
+                                    What problems are being reported?
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="analytics-bars"
+                            id="categoryChart"
+                        >
+
+                            <div class="analytics-empty">
+                                Loading...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+
+                                <h3>
+                                    Issues by Location
+                                </h3>
+
+                                <p>
+                                    Where are problems concentrated?
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="analytics-bars"
+                            id="locationChart"
+                        >
+
+                            <div class="analytics-empty">
+                                Loading...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+
+                                <h3>
+                                    Issue Status
+                                </h3>
+
+                                <p>
+                                    Current resolution progress
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="analytics-bars"
+                            id="statusChart"
+                        >
+
+                            <div class="analytics-empty">
+                                Loading...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SEVERITY -->
+
+                    <div class="analytics-card">
+
+                        <div class="analytics-card-header">
+
+                            <div>
+
+                                <h3>
+                                    Severity Breakdown
+                                </h3>
+
+                                <p>
+                                    How serious are reported issues?
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="analytics-bars"
+                            id="severityChart"
+                        >
+
+                            <div class="analytics-empty">
+                                Loading...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="../js/data.js"></script>
+
+<script src="../js/admin/analytics.js"></script>
+
+
+</body>
+
+</html> 

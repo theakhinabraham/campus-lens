@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Campus — CampusLens</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/main.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/pages.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- =========================================
+         SIDEBAR
+         ========================================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <span class="brand-mark">
+                C
+            </span>
+
+            <span>
+                CampusLens
+            </span>
+
+        </div>
+
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-section-title">
+                Overview
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a
+                    href="dashboard.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">◉</span>
+                    Dashboard
+                </a>
+
+
+                <a
+                    href="campus.html"
+                    class="sidebar-link active"
+                >
+                    <span class="sidebar-icon">⌖</span>
+                    Campus
+                </a>
+
+
+                <a
+                    href="issues.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">⚠</span>
+                    Issues
+                </a>
+
+
+                <a
+                    href="reports.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">✓</span>
+                    My Reports
+                </a>
+
+            </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="../index.html"
+                class="sidebar-link"
+            >
+                <span class="sidebar-icon">↪</span>
+                Exit
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN
+         ========================================= -->
+
+    <main class="app-main">
+
+
+        <!-- HEADER -->
+
+        <header class="app-header">
+
+            <div class="header-title">
+
+                <h1>
+                    Campus
+                </h1>
+
+                <p>
+                    See what's happening across campus.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="notification-button"
+                    aria-label="Notifications"
+                >
+                    ♢
+                </button>
+
+
+                <div class="user-profile">
+
+                    <div class="user-avatar">
+                        AA
+                    </div>
+
+                    <div class="user-info">
+
+                        <span class="user-name">
+                            Akhin Abraham
+                        </span>
+
+                        <span class="user-role">
+                            Student
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             CAMPUS CONTENT
+             ========================================= -->
+
+        <section class="page-content">
+
+
+            <div class="campus-page">
+
+
+                <!-- MAP HEADER -->
+
+                <div class="campus-intro">
+
+                    <div>
+
+                        <h2>
+                            Campus Overview
+                        </h2>
+
+                        <p>
+                            Explore reported issues by location.
+                        </p>
+
+                    </div>
+
+
+                    <div class="campus-legend">
+
+                        <span>
+                            <i class="legend-dot high"></i>
+                            High
+                        </span>
+
+                        <span>
+                            <i class="legend-dot medium"></i>
+                            Medium
+                        </span>
+
+                        <span>
+                            <i class="legend-dot low"></i>
+                            Low
+                        </span>
+
+                        <span>
+                            <i class="legend-dot clear"></i>
+                            No active issues
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CAMPUS MAP -->
+
+                <div
+                    class="campus-map"
+                    id="campusMap"
+                >
+
+
+                    <!-- BLOCK A -->
+
+                    <button
+                        class="campus-building"
+                        data-location="block-a"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Block A
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- BLOCK B -->
+
+                    <button
+                        class="campus-building"
+                        data-location="block-b"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Block B
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- BLOCK C -->
+
+                    <button
+                        class="campus-building"
+                        data-location="block-c"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Block C
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- LIBRARY -->
+
+                    <button
+                        class="campus-building"
+                        data-location="library"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Library
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- CAFETERIA -->
+
+                    <button
+                        class="campus-building"
+                        data-location="cafeteria"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Cafeteria
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- AUDITORIUM -->
+
+                    <button
+                        class="campus-building"
+                        data-location="auditorium"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Auditorium
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- SPORTS -->
+
+                    <button
+                        class="campus-building"
+                        data-location="sports"
+                    >
+
+                        <span class="building-status"></span>
+
+                        <span class="building-name">
+                            Sports Complex
+                        </span>
+
+                        <span class="building-issues">
+                            Loading...
+                        </span>
+
+                    </button>
+
+
+                    <!-- PATHS -->
+
+                    <div class="campus-path path-one"></div>
+
+                    <div class="campus-path path-two"></div>
+
+                    <div class="campus-path path-three"></div>
+
+
+                </div>
+
+
+                <!-- LOCATION DETAILS -->
+
+                <aside
+                    class="campus-details"
+                    id="campusDetails"
+                >
+
+                    <div class="campus-details-empty">
+
+                        <span class="details-icon">
+                            ⌖
+                        </span>
+
+                        <h3>
+                            Select a location
+                        </h3>
+
+                        <p>
+                            Click a building to see
+                            what's happening there.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="../js/data.js"></script>
+
+<script src="../js/student/campus.js"></script>
+
+
+</body>
+
+</html>

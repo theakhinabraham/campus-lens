@@ -6,6 +6,11 @@ const description =
 const characterCount =
     document.getElementById("characterCount");
 
+const photoInput =
+    document.getElementById("photo");
+
+const uploadBox =
+    document.querySelector(".upload-box");
 
 // =========================================
 // CHARACTER COUNTER
@@ -15,6 +20,80 @@ description.addEventListener("input", () => {
 
     characterCount.textContent =
         description.value.length;
+
+});
+
+// =========================================
+// PHOTO UPLOAD
+// =========================================
+
+photoInput.addEventListener("change", () => {
+
+    const file =
+        photoInput.files[0];
+
+    if (!file) {
+        return;
+    }
+
+
+    // Validate file type
+
+    const allowedTypes = [
+        "image/png",
+        "image/jpeg"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+
+        alert(
+            "Please upload a PNG or JPG image."
+        );
+
+        photoInput.value = "";
+
+        return;
+    }
+
+
+    // Validate file size
+
+    const maxSize =
+        5 * 1024 * 1024;
+
+    if (file.size > maxSize) {
+
+        alert(
+            "Image must be smaller than 5MB."
+        );
+
+        photoInput.value = "";
+
+        return;
+    }
+
+
+    // Update upload UI
+
+    uploadBox.innerHTML = `
+
+        <span class="upload-icon">
+            ✓
+        </span>
+
+        <span>
+
+            <strong>
+                ${file.name}
+            </strong>
+
+            <small>
+                Photo selected
+            </small>
+
+        </span>
+
+    `;
 
 });
 
@@ -66,7 +145,21 @@ reportForm.addEventListener("submit", (event) => {
             new Date().toISOString(),
 
         reportedBy:
-            "Akhin Abraham"
+            "Akhin Abraham",
+
+        photo:
+            photoInput.files[0]
+                ? {
+                    name:
+                        photoInput.files[0].name,
+
+                    type:
+                        photoInput.files[0].type,
+
+                    size:
+                        photoInput.files[0].size
+                }
+                : null
 
     };
 
@@ -94,6 +187,26 @@ reportForm.addEventListener("submit", (event) => {
     reportForm.reset();
 
     characterCount.textContent = "0";
+
+    uploadBox.innerHTML = `
+
+    <span class="upload-icon">
+        ↑
+    </span>
+
+    <span>
+
+        <strong>
+            Click to upload
+        </strong>
+
+        <small>
+            PNG, JPG up to 5MB
+        </small>
+
+    </span>
+
+`;
 
 
     // Return to dashboard
