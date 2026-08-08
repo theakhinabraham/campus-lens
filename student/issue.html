@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Issue Details — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- =========================================
+             SIDEBAR
+             ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Overview
+                </div>
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">◉</span>
+                        Dashboard
+                    </a>
+
+
+                    <a
+                        href="campus.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">⌖</span>
+                        Campus
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link active"
+                    >
+                        <span class="sidebar-icon">⚠</span>
+                        Issues
+                    </a>
+
+
+                    <a
+                        href="reports.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">✓</span>
+                        My Reports
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">↪</span>
+                    Exit
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN
+             ========================================= -->
+
+        <main class="app-main">
+
+
+            <!-- HEADER -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        Issue Details
+                    </h1>
+
+                    <p>
+                        Track what's happening with this issue.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AA
+                        </div>
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Akhin Abraham
+                            </span>
+
+                            <span class="user-role">
+                                Student
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 CONTENT
+                 ========================================= -->
+
+            <section class="page-content">
+
+
+                <div class="issue-detail-page">
+
+
+                    <a
+                        href="issues.html"
+                        class="back-link"
+                    >
+                        ← Back to issues
+                    </a>
+
+
+                    <!-- =================================
+                         ISSUE HEADER
+                         ================================= -->
+
+                    <div
+                        class="issue-detail-header"
+                        id="issueDetailHeader"
+                    ></div>
+
+
+                    <!-- =================================
+                         ISSUE CONTENT GRID
+                         ================================= -->
+
+                    <div class="issue-detail-grid">
+
+
+                        <!-- MAIN CONTENT -->
+
+                        <div class="issue-detail-main">
+
+
+                            <!-- DESCRIPTION -->
+
+                            <section class="detail-card">
+
+                                <div class="detail-card-header">
+
+                                    <h3>
+                                        About this issue
+                                    </h3>
+
+                                </div>
+
+
+                                <div
+                                    id="issueDescription"
+                                    class="issue-description"
+                                ></div>
+
+                            </section>
+
+
+                            <!-- LOCATION -->
+
+                            <section class="detail-card">
+
+                                <div class="detail-card-header">
+
+                                    <h3>
+                                        Location
+                                    </h3>
+
+                                </div>
+
+
+                                <div
+                                    id="issueLocation"
+                                    class="issue-location"
+                                ></div>
+
+                            </section>
+
+
+                            <!-- ACTIVITY -->
+
+                            <section class="detail-card">
+
+                                <div class="detail-card-header">
+
+                                    <h3>
+                                        Activity
+                                    </h3>
+
+                                </div>
+
+
+                                <div
+                                    id="issueActivity"
+                                    class="issue-activity"
+                                ></div>
+
+                            </section>
+
+                        </div>
+
+
+                        <!-- SIDEBAR -->
+
+                        <aside class="issue-detail-sidebar">
+
+
+                            <!-- STATUS -->
+
+                            <section class="detail-card">
+
+                                <div class="detail-card-header">
+
+                                    <h3>
+                                        Issue status
+                                    </h3>
+
+                                </div>
+
+
+                                <div
+                                    id="issueTimeline"
+                                    class="issue-timeline"
+                                ></div>
+
+                            </section>
+
+
+                            <!-- COMMUNITY -->
+
+                            <section class="detail-card">
+
+                                <div class="community-card">
+
+                                    <div class="community-number">
+                                        <span
+                                            id="reportCount"
+                                        >
+                                            0
+                                        </span>
+                                    </div>
+
+                                    <p>
+                                        students have experienced
+                                        this issue
+                                    </p>
+
+
+                                    <button
+                                        id="confirmIssueButton"
+                                        class="btn btn-primary community-button"
+                                    >
+                                        I've experienced this
+                                    </button>
+
+                                </div>
+
+                            </section>
+
+
+                        </aside>
+
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/student/issue.js"></script>
+
+</body>
+
+</html>

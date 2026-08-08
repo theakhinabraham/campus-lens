@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Reports — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Overview
+                </div>
+
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">◉</span>
+                        Dashboard
+                    </a>
+
+
+                    <a
+                        href="campus.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">⌖</span>
+                        Campus
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">⚠</span>
+                        Issues
+                    </a>
+
+
+                    <a
+                        href="reports.html"
+                        class="sidebar-link active"
+                    >
+                        <span class="sidebar-icon">✓</span>
+                        My Reports
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">↪</span>
+                    Exit
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="app-main">
+
+
+            <!-- HEADER -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        My Reports
+                    </h1>
+
+                    <p>
+                        Track the issues you've reported.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AA
+                        </div>
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Akhin Abraham
+                            </span>
+
+                            <span class="user-role">
+                                Student
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+
+            <section class="page-content">
+
+
+                <div class="reports-page">
+
+
+                    <!-- INTRO -->
+
+                    <div class="reports-intro">
+
+                        <div>
+
+                            <h2>
+                                Your reports
+                            </h2>
+
+                            <p>
+                                Follow the progress of issues
+                                you've brought to campus attention.
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="report.html"
+                            class="btn btn-primary"
+                        >
+                            + Report an Issue
+                        </a>
+
+                    </div>
+
+
+                    <!-- STATS -->
+
+                    <div class="reports-stats">
+
+                        <div class="report-stat-card">
+
+                            <span>
+                                Total reports
+                            </span>
+
+                            <strong id="totalReports">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-stat-card">
+
+                            <span>
+                                Investigating
+                            </span>
+
+                            <strong id="activeReports">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="report-stat-card">
+
+                            <span>
+                                Resolved
+                            </span>
+
+                            <strong id="resolvedReports">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REPORT LIST -->
+
+                    <div
+                        class="reports-list"
+                        id="reportsList"
+                    ></div>
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div
+                        class="reports-empty"
+                        id="reportsEmpty"
+                    >
+
+                        <div class="empty-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            You haven't reported anything yet
+                        </h3>
+
+                        <p>
+                            Spotted something that needs attention?
+                            Let the campus know.
+                        </p>
+
+
+                        <a
+                            href="report.html"
+                            class="btn btn-primary"
+                        >
+                            Report an Issue
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/student/reports.js"></script>
+
+</body>
+
+</html>

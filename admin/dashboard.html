@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- =========================================
+             SIDEBAR
+             ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Administration
+                </div>
+
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link active"
+                    >
+
+                        <span class="sidebar-icon">
+                            ◉
+                        </span>
+
+                        Dashboard
+
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link"
+                    >
+
+                        <span class="sidebar-icon">
+                            ⚠
+                        </span>
+
+                        Issues
+
+                    </a>
+
+
+                    <a
+                        href="analytics.html"
+                        class="sidebar-link"
+                    >
+
+                        <span class="sidebar-icon">
+                            ▥
+                        </span>
+
+                        Analytics
+
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+
+                    <span class="sidebar-icon">
+                        ↪
+                    </span>
+
+                    Exit
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN
+             ========================================= -->
+
+        <main class="app-main">
+
+
+            <!-- HEADER -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        Campus Overview
+                    </h1>
+
+                    <p>
+                        Monitor and respond to campus issues.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AD
+                        </div>
+
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Campus Admin
+                            </span>
+
+                            <span class="user-role">
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 CONTENT
+                 ========================================= -->
+
+            <section class="page-content">
+
+
+                <div class="admin-dashboard">
+
+
+                    <!-- =================================
+                         WELCOME
+                         ================================= -->
+
+                    <div class="admin-welcome">
+
+                        <div>
+
+                            <h2>
+                                Good evening, Admin.
+                            </h2>
+
+                            <p>
+                                Here's what needs your attention.
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            class="admin-live-indicator"
+                        >
+
+                            <span></span>
+
+                            Live campus data
+
+                        </span>
+
+                    </div>
+
+
+                    <!-- =================================
+                         STATS
+                         ================================= -->
+
+                    <div class="admin-stats">
+
+
+                        <div class="admin-stat-card">
+
+                            <div class="admin-stat-icon">
+                                ⚠
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Total issues
+                                </span>
+
+                                <strong
+                                    id="totalIssues"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-stat-card">
+
+                            <div class="admin-stat-icon warning">
+                                !
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Needs attention
+                                </span>
+
+                                <strong
+                                    id="attentionIssues"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-stat-card">
+
+                            <div class="admin-stat-icon info">
+                                ◌
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Investigating
+                                </span>
+
+                                <strong
+                                    id="investigatingIssues"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-stat-card">
+
+                            <div class="admin-stat-icon success">
+                                ✓
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Resolved
+                                </span>
+
+                                <strong
+                                    id="resolvedIssues"
+                                >
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         MAIN GRID
+                         ================================= -->
+
+                    <div class="admin-grid">
+
+
+                        <!-- PRIORITY ISSUES -->
+
+                        <section class="admin-card">
+
+                            <div class="admin-card-header">
+
+                                <div>
+
+                                    <h3>
+                                        Needs attention
+                                    </h3>
+
+                                    <p>
+                                        Issues requiring action.
+                                    </p>
+
+                                </div>
+
+
+                                <a
+                                    href="issues.html"
+                                    class="admin-view-link"
+                                >
+                                    View all →
+                                </a>
+
+                            </div>
+
+
+                            <div
+                                class="priority-list"
+                                id="priorityList"
+                            ></div>
+
+                        </section>
+
+
+                        <!-- CAMPUS HEALTH -->
+
+                        <section class="admin-card">
+
+                            <div class="admin-card-header">
+
+                                <div>
+
+                                    <h3>
+                                        Campus health
+                                    </h3>
+
+                                    <p>
+                                        Current issue distribution.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                class="campus-health"
+                                id="campusHealth"
+                            ></div>
+
+                        </section>
+
+
+                    </div>
+
+
+                    <!-- =================================
+                         RECENT ACTIVITY
+                         ================================= -->
+
+                    <section class="admin-card">
+
+                        <div class="admin-card-header">
+
+                            <div>
+
+                                <h3>
+                                    Recent reports
+                                </h3>
+
+                                <p>
+                                    Latest issues submitted by students.
+                                </p>
+
+                            </div>
+
+
+                            <a
+                                href="issues.html"
+                                class="admin-view-link"
+                            >
+                                View all →
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="recent-reports"
+                            id="recentReports"
+                        ></div>
+
+                    </section>
+
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/admin/dashboard.js"></script>
+
+</body>
+
+</html>

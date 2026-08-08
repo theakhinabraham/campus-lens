@@ -2,31 +2,21 @@
    CAMPUSLENS ISSUES EXPLORER
    ========================================= */
 
+const issuesList = document.getElementById("issuesList");
 
-const issuesList =
-    document.getElementById("issuesList");
+const issuesEmpty = document.getElementById("issuesEmpty");
 
-const issuesEmpty =
-    document.getElementById("issuesEmpty");
+const resultsCount = document.getElementById("resultsCount");
 
-const resultsCount =
-    document.getElementById("resultsCount");
+const searchInput = document.getElementById("issueSearch");
 
-const searchInput =
-    document.getElementById("issueSearch");
+const categoryFilter = document.getElementById("categoryFilter");
 
-const categoryFilter =
-    document.getElementById("categoryFilter");
+const locationFilter = document.getElementById("locationFilter");
 
-const locationFilter =
-    document.getElementById("locationFilter");
+const statusFilter = document.getElementById("statusFilter");
 
-const statusFilter =
-    document.getElementById("statusFilter");
-
-const sortIssues =
-    document.getElementById("sortIssues");
-
+const sortIssues = document.getElementById("sortIssues");
 
 // =========================================
 // CURRENT USER
@@ -34,13 +24,11 @@ const sortIssues =
 
 const CURRENT_USER = "Akhin Abraham";
 
-
 // =========================================
 // FRIENDLY LABELS
 // =========================================
 
 const categoryNames = {
-
     infrastructure: "Infrastructure",
 
     wifi: "Wi-Fi / Network",
@@ -57,13 +45,10 @@ const categoryNames = {
 
     accessibility: "Accessibility",
 
-    other: "Other"
-
+    other: "Other",
 };
 
-
 const locationNames = {
-
     "block-a": "Block A",
 
     "block-b": "Block B",
@@ -76,41 +61,29 @@ const locationNames = {
 
     auditorium: "Auditorium",
 
-    sports: "Sports Complex"
-
+    sports: "Sports Complex",
 };
 
-
 const statusNames = {
-
     reported: "Reported",
 
     investigating: "Investigating",
 
-    resolved: "Resolved"
-
+    resolved: "Resolved",
 };
-
 
 // =========================================
 // FORMAT TIME
 // =========================================
 
 function formatTime(dateString) {
+    const date = new Date(dateString);
 
-    const date =
-        new Date(dateString);
+    const now = new Date();
 
-    const now =
-        new Date();
+    const difference = now - date;
 
-    const difference =
-        now - date;
-
-    const minutes =
-        Math.floor(
-            difference / (1000 * 60)
-        );
+    const minutes = Math.floor(difference / (1000 * 60));
 
     if (minutes < 1) {
         return "Just now";
@@ -120,244 +93,140 @@ function formatTime(dateString) {
         return `${minutes}m ago`;
     }
 
-    const hours =
-        Math.floor(minutes / 60);
+    const hours = Math.floor(minutes / 60);
 
     if (hours < 24) {
         return `${hours}h ago`;
     }
 
-    const days =
-        Math.floor(hours / 24);
+    const days = Math.floor(hours / 24);
 
     if (days === 1) {
         return "Yesterday";
     }
 
     return `${days}d ago`;
-
 }
-
 
 // =========================================
 // SEVERITY RANK
 // =========================================
 
 function severityRank(severity) {
-
     const ranks = {
-
         high: 3,
 
         medium: 2,
 
-        low: 1
-
+        low: 1,
     };
 
     return ranks[severity] || 0;
-
 }
-
 
 // =========================================
 // GET FILTERED ISSUES
 // =========================================
 
 function getFilteredIssues() {
-
-    let issues =
-        CampusLens.getIssues();
-
+    let issues = CampusLens.getIssues();
 
     // Search
 
-    const search =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
+    const search = searchInput.value.trim().toLowerCase();
 
     if (search) {
-
-        issues = issues.filter(issue => {
-
+        issues = issues.filter((issue) => {
             return (
-
-                issue.title
-                    .toLowerCase()
-                    .includes(search)
-
-                ||
-
-                issue.description
-                    .toLowerCase()
-                    .includes(search)
-
+                issue.title.toLowerCase().includes(search) ||
+                issue.description.toLowerCase().includes(search)
             );
-
         });
-
     }
-
 
     // Category
 
-    if (
-        categoryFilter.value !== "all"
-    ) {
-
-        issues = issues.filter(
-            issue =>
-                issue.category ===
-                categoryFilter.value
-        );
-
+    if (categoryFilter.value !== "all") {
+        issues = issues.filter((issue) => issue.category === categoryFilter.value);
     }
-
 
     // Location
 
-    if (
-        locationFilter.value !== "all"
-    ) {
-
-        issues = issues.filter(
-            issue =>
-                issue.location ===
-                locationFilter.value
-        );
-
+    if (locationFilter.value !== "all") {
+        issues = issues.filter((issue) => issue.location === locationFilter.value);
     }
-
 
     // Status
 
-    if (
-        statusFilter.value !== "all"
-    ) {
-
-        issues = issues.filter(
-            issue =>
-                issue.status ===
-                statusFilter.value
-        );
-
+    if (statusFilter.value !== "all") {
+        issues = issues.filter((issue) => issue.status === statusFilter.value);
     }
-
 
     // Sorting
 
     switch (sortIssues.value) {
-
         case "priority":
-
             issues.sort((a, b) => {
-
-                return (
-                    severityRank(b.severity) -
-                    severityRank(a.severity)
-                );
-
+                return severityRank(b.severity) - severityRank(a.severity);
             });
 
             break;
-
 
         case "recent":
-
             issues.sort((a, b) => {
-
-                return (
-                    new Date(b.createdAt) -
-                    new Date(a.createdAt)
-                );
-
+                return new Date(b.createdAt) - new Date(a.createdAt);
             });
 
             break;
-
 
         case "reports":
-
             issues.sort((a, b) => {
-
-                return (
-                    (b.reports || 1) -
-                    (a.reports || 1)
-                );
-
+                return (b.reports || 1) - (a.reports || 1);
             });
 
             break;
-
     }
 
-
     return issues;
-
 }
-
 
 // =========================================
 // RENDER ISSUES
 // =========================================
 
 function renderIssues() {
-
-    const issues =
-        getFilteredIssues();
-
+    const issues = getFilteredIssues();
 
     issuesList.innerHTML = "";
 
-
-    resultsCount.textContent =
-        `${issues.length} ${
-            issues.length === 1
-                ? "issue"
-                : "issues"
+    resultsCount.textContent = `${issues.length} ${issues.length === 1 ? "issue" : "issues"
         }`;
 
-
     if (issues.length === 0) {
-
-        issuesEmpty.classList.add(
-            "visible"
-        );
+        issuesEmpty.classList.add("visible");
 
         return;
-
     }
 
+    issuesEmpty.classList.remove("visible");
 
-    issuesEmpty.classList.remove(
-        "visible"
-    );
-
-
-    issues.forEach(issue => {
-
+    issues.forEach((issue) => {
         const card =
             document.createElement("article");
 
         card.className =
             "issue-card";
 
-
-        const userReports =
-            JSON.parse(
-                localStorage.getItem(
-                    `campusLensConfirmed_${CURRENT_USER}`
-                ) || "[]"
-            );
+        card.dataset.issueId =
+            issue.id;
 
 
-        const confirmed =
-            userReports.includes(
-                String(issue.id)
-            );
 
+        const userReports = JSON.parse(
+            localStorage.getItem(`campusLensConfirmed_${CURRENT_USER}`) || "[]",
+        );
+
+        const confirmed = userReports.includes(String(issue.id));
 
         card.innerHTML = `
 
@@ -417,27 +286,20 @@ function renderIssues() {
                 <span class="issue-reports">
 
                     ${issue.reports || 1}
-                    ${
-                        (issue.reports || 1) === 1
-                            ? "student"
-                            : "students"
-                    }
+                    ${(issue.reports || 1) === 1 ? "student" : "students"}
 
                 </span>
 
 
                 <button
-                    class="confirm-button ${
-                        confirmed ? "confirmed" : ""
-                    }"
+                    class="confirm-button ${confirmed ? "confirmed" : ""}"
                     data-id="${issue.id}"
                 >
 
-                    ${
-                        confirmed
-                            ? "✓ I've experienced this"
-                            : "I've experienced this"
-                    }
+                    ${confirmed
+                ? "✓ I've experienced this"
+                : "I've experienced this"
+            }
 
                 </button>
 
@@ -445,143 +307,73 @@ function renderIssues() {
 
         `;
 
-
         issuesList.appendChild(card);
-
     });
-
 }
-
 
 // =========================================
 // CONFIRM ISSUE
 // =========================================
 
 function confirmIssue(id) {
+    const issues = CampusLens.getIssues();
 
-    const issues =
-        CampusLens.getIssues();
-
-
-    const issue =
-        issues.find(
-            item =>
-                String(item.id) ===
-                String(id)
-        );
-
+    const issue = issues.find((item) => String(item.id) === String(id));
 
     if (!issue) {
         return;
     }
 
+    const storageKey = `campusLensConfirmed_${CURRENT_USER}`;
 
-    const storageKey =
-        `campusLensConfirmed_${CURRENT_USER}`;
+    let confirmedIssues = JSON.parse(localStorage.getItem(storageKey) || "[]");
 
-
-    let confirmedIssues =
-        JSON.parse(
-            localStorage.getItem(
-                storageKey
-            ) || "[]"
-        );
-
-
-    const issueId =
-        String(id);
-
+    const issueId = String(id);
 
     // Already confirmed
 
-    if (
-        confirmedIssues.includes(
-            issueId
-        )
-    ) {
+    if (confirmedIssues.includes(issueId)) {
+        confirmedIssues = confirmedIssues.filter((item) => item !== issueId);
 
-        confirmedIssues =
-            confirmedIssues.filter(
-                item =>
-                    item !== issueId
-            );
-
-        issue.reports =
-            Math.max(
-                1,
-                (issue.reports || 1) - 1
-            );
-
+        issue.reports = Math.max(1, (issue.reports || 1) - 1);
     }
 
     // New confirmation
-
     else {
+        confirmedIssues.push(issueId);
 
-        confirmedIssues.push(
-            issueId
-        );
-
-        issue.reports =
-            (issue.reports || 1) + 1;
-
+        issue.reports = (issue.reports || 1) + 1;
     }
 
+    localStorage.setItem(storageKey, JSON.stringify(confirmedIssues));
 
-    localStorage.setItem(
-        storageKey,
-        JSON.stringify(
-            confirmedIssues
-        )
-    );
-
-
-    CampusLens.updateIssue(
-        issue.id,
-        {
-            reports: issue.reports
-        }
-    );
-
+    CampusLens.updateIssue(issue.id, {
+        reports: issue.reports,
+    });
 
     renderIssues();
-
 }
-
 
 // =========================================
 // EVENT LISTENERS
 // =========================================
 
-searchInput.addEventListener(
-    "input",
-    renderIssues
-);
+searchInput.addEventListener("input", renderIssues);
 
-categoryFilter.addEventListener(
-    "change",
-    renderIssues
-);
+categoryFilter.addEventListener("change", renderIssues);
 
-locationFilter.addEventListener(
-    "change",
-    renderIssues
-);
+locationFilter.addEventListener("change", renderIssues);
 
-statusFilter.addEventListener(
-    "change",
-    renderIssues
-);
+statusFilter.addEventListener("change", renderIssues);
 
-sortIssues.addEventListener(
-    "change",
-    renderIssues
-);
-
+sortIssues.addEventListener("change", renderIssues);
 
 issuesList.addEventListener(
     "click",
     event => {
+
+        // If the user clicked the confirmation button,
+        // handle the confirmation instead of opening the issue.
 
         const button =
             event.target.closest(
@@ -589,35 +381,60 @@ issuesList.addEventListener(
             );
 
 
-        if (!button) {
+        if (button) {
+
+            confirmIssue(
+                button.dataset.id
+            );
+
+            return;
+
+        }
+
+
+        // Otherwise, find the issue card.
+
+        const card =
+            event.target.closest(
+                ".issue-card"
+            );
+
+
+        if (!card) {
             return;
         }
 
 
-        confirmIssue(
-            button.dataset.id
-        );
+        // Get the issue ID stored on the card.
+
+        const issueId =
+            card.dataset.issueId;
+
+
+        if (!issueId) {
+            return;
+        }
+
+
+        // Open the issue detail page.
+
+        window.location.href =
+            `issue.html?id=${issueId}`;
 
     }
 );
-
 
 // =========================================
 // HTML ESCAPING
 // =========================================
 
 function escapeHTML(value) {
+    const div = document.createElement("div");
 
-    const div =
-        document.createElement("div");
-
-    div.textContent =
-        value ?? "";
+    div.textContent = value ?? "";
 
     return div.innerHTML;
-
 }
-
 
 // =========================================
 // INITIAL RENDER
