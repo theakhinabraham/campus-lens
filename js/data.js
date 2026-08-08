@@ -148,7 +148,7 @@ const CampusLens = {
 
 
     // =========================================
-    // INITIALIZE DEMO DATA
+    // INITIALIZE DATA
     // =========================================
 
     initialize() {
@@ -163,7 +163,7 @@ const CampusLens = {
             return;
         }
 
-        this.saveIssues(demoIssues);
+        this.saveIssues([]);
 
     }
 

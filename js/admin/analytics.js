@@ -393,57 +393,44 @@ renderBars(
 // CAMPUS HEALTH
 // =========================================
 
-function calculateHealthScore() {
+function calculateLocationHealth(location) {
 
-    if (!issues.length) {
-
-        return 100;
-
-    }
-
-
-    let penalty = 0;
+    const locationIssues =
+        issues.filter(
+            issue =>
+                issue.location === location &&
+                issue.status !== "resolved"
+        );
 
 
-    issues.forEach(
+    let score = 100;
+
+
+    locationIssues.forEach(
         issue => {
 
             if (
-                issue.status ===
-                "resolved"
+                issue.severity === "high"
             ) {
 
-                return;
-
-            }
-
-
-            if (
-                issue.severity ===
-                "high"
-            ) {
-
-                penalty += 12;
+                score -= 25;
 
             }
 
             else if (
-                issue.severity ===
-                "medium"
+                issue.severity === "medium"
             ) {
 
-                penalty += 6;
+                score -= 12;
 
             }
 
             else {
 
-                penalty += 3;
+                score -= 5;
 
             }
 
-
-            // Student impact
 
             const reports =
                 issue.reports || 1;
@@ -451,13 +438,13 @@ function calculateHealthScore() {
 
             if (reports >= 10) {
 
-                penalty += 4;
+                score -= 5;
 
             }
 
             else if (reports >= 5) {
 
-                penalty += 2;
+                score -= 2;
 
             }
 
@@ -469,10 +456,39 @@ function calculateHealthScore() {
         0,
         Math.min(
             100,
-            Math.round(
-                100 - penalty
-            )
+            score
         )
+    );
+
+}
+
+
+function calculateHealthScore() {
+
+    if (!issues.length) {
+
+        return 100;
+
+    }
+
+
+    const locations =
+        Object.keys(locationNames);
+
+
+    const scores =
+        locations.map(
+            location =>
+                calculateLocationHealth(location)
+        );
+
+
+    return Math.round(
+        scores.reduce(
+            (total, score) =>
+                total + score,
+            0
+        ) / scores.length
     );
 
 }
