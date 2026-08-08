@@ -136,27 +136,20 @@
                         ☰
                     </button>
 
-                    <button
-                        class="notification-button"
-                        aria-label="Notifications"
-                    >
-                        ♢
-                    </button>
-
 
                     <div class="user-profile">
 
-                        <div class="user-avatar">
-                            AA
-                        </div>
+<div class="user-avatar" data-user-initials>
+                        AA
+                    </div>
 
-                        <div class="user-info">
+                    <div class="user-info">
 
-                            <span class="user-name">
-                                Akhin Abraham
-                            </span>
+                        <span class="user-name" data-user-name>
+                            Akhin Abraham
+                        </span>
 
-                            <span class="user-role">
+                        <span class="user-role" data-user-role>
                                 Student
                             </span>
 
@@ -402,6 +395,52 @@
     <script src="../js/data.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/student/issues.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const issuesList = document.getElementById("issuesList");
+            const issuesEmpty = document.getElementById("issuesEmpty");
+            const resultsCount = document.getElementById("resultsCount");
+            if (!issuesList || !issuesEmpty || !resultsCount) return;
+            try {
+                const issues = JSON.parse(localStorage.getItem("campusLensIssues") || "[]")
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                issuesList.innerHTML = "";
+                resultsCount.textContent = `${issues.length} ${issues.length === 1 ? "issue" : "issues"}`;
+                if (issues.length === 0) {
+                    issuesEmpty.classList.add("visible");
+                    return;
+                }
+                issuesEmpty.classList.remove("visible");
+                issues.forEach((issue) => {
+                    const card = document.createElement("article");
+                    card.className = "issue-card";
+                    card.dataset.issueId = issue.id;
+                    card.innerHTML = `
+                        <div class="issue-main">
+                            <div class="issue-card-top">
+                                <span class="issue-status ${issue.status}">${issue.status}</span>
+                                <span class="issue-severity"><span class="issue-severity-dot ${issue.severity}"></span>${issue.severity}</span>
+                            </div>
+                            <h3>${issue.title}</h3>
+                            <p class="issue-card-description">${issue.description}</p>
+                            <div class="issue-meta">
+                                <span>⌖ ${issue.location}</span>
+                                <span># ${issue.category}</span>
+                                <span>${new Date(issue.createdAt).toLocaleDateString()}</span>
+                            </div>
+                        </div>
+                        <div class="issue-actions">
+                            <span class="issue-reports">${issue.reports || 1} ${(issue.reports || 1) === 1 ? "student" : "students"}</span>
+                            <button class="confirm-button" data-id="${issue.id}">I've experienced this</button>
+                        </div>
+                    `;
+                    issuesList.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Issue list fallback failed", error);
+            }
+        });
+    </script>
 
 </body>
 

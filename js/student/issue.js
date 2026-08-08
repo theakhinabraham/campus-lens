@@ -484,7 +484,7 @@ activity.innerHTML = `
 // =========================================
 
 const CURRENT_USER =
-    "Akhin Abraham";
+    getCurrentUser().name;
 
 
 const storageKey =

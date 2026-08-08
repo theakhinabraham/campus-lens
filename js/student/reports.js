@@ -4,7 +4,7 @@
 
 
 const CURRENT_USER =
-    "Akhin Abraham";
+    getCurrentUser().name;
 
 
 const reportsList =
@@ -122,10 +122,21 @@ function formatDate(
 // GET USER REPORTS
 // =========================================
 
+function getStoredIssues() {
+    try {
+        const storedIssues = localStorage.getItem("campusLensIssues") || localStorage.getItem("campusLensIssues") || localStorage.getItem("campusLensIssues");
+        return storedIssues ? JSON.parse(storedIssues) : [];
+    } catch (error) {
+        console.error("Unable to load issues", error);
+        return [];
+    }
+}
+
 function getMyReports() {
 
-    const issues =
-        CampusLens.getIssues();
+    const issues = typeof CampusLens !== "undefined" && typeof CampusLens.getIssues === "function"
+        ? CampusLens.getIssues()
+        : getStoredIssues();
 
 
     return issues
@@ -425,4 +436,64 @@ function escapeHTML(
 // INITIALIZE
 // =========================================
 
-renderReports();
+function initializeReports() {
+    try {
+        renderReports();
+    } catch (error) {
+        console.error("Unable to render reports", error);
+
+        const reports = (JSON.parse(localStorage.getItem("campusLensIssues") || "[]"))
+            .filter(issue => issue.reportedBy === CURRENT_USER)
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        updateStats(reports);
+        reportsList.innerHTML = "";
+
+        if (reports.length === 0) {
+            reportsEmpty.classList.add("visible");
+            return;
+        }
+
+        reportsEmpty.classList.remove("visible");
+
+        reports.forEach(issue => {
+            const card = document.createElement("article");
+            card.className = "report-card";
+            card.dataset.issueId = issue.id;
+            card.innerHTML = `
+                <div>
+                    <div class="issue-card-top">
+                        <span class="issue-status ${issue.status}">
+                            ${statusNames[issue.status] || issue.status}
+                        </span>
+                        <span class="issue-severity">
+                            <span class="issue-severity-dot ${issue.severity}"></span>
+                            ${issue.severity}
+                        </span>
+                    </div>
+                    <h3>${escapeHTML(issue.title)}</h3>
+                    <p class="report-card-description">${escapeHTML(issue.description)}</p>
+                    <div class="report-meta">
+                        <span>⌖ ${locationNames[issue.location] || issue.location}</span>
+                        <span># ${categoryNames[issue.category] || issue.category}</span>
+                        <span>${issue.reports || 1} ${(issue.reports || 1) === 1 ? "student affected" : "students affected"}</span>
+                    </div>
+                </div>
+                <div class="report-card-side">
+                    <span class="report-date">Reported ${formatDate(issue.createdAt)}</span>
+                    <span>→</span>
+                </div>
+            `;
+            reportsList.appendChild(card);
+        });
+    }
+}
+
+window.renderReports = renderReports;
+window.initializeReports = initializeReports;
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeReports);
+} else {
+    initializeReports();
+}

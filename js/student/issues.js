@@ -22,7 +22,7 @@ const sortIssues = document.getElementById("sortIssues");
 // CURRENT USER
 // =========================================
 
-const CURRENT_USER = "Akhin Abraham";
+const CURRENT_USER = getCurrentUser().name;
 
 // =========================================
 // FRIENDLY LABELS
@@ -128,8 +128,24 @@ function severityRank(severity) {
 // GET FILTERED ISSUES
 // =========================================
 
+function getStoredIssues() {
+    try {
+        const storedIssues = localStorage.getItem("campusLensIssues") || localStorage.getItem("campusLensIssues") || localStorage.getItem("campusLensIssues");
+        return storedIssues ? JSON.parse(storedIssues) : [];
+    } catch (error) {
+        console.error("Unable to load issues", error);
+        return [];
+    }
+}
+
 function getFilteredIssues() {
-    let issues = CampusLens.getIssues();
+    let issues = [];
+
+    if (typeof CampusLens !== "undefined" && typeof CampusLens.getIssues === "function") {
+        issues = CampusLens.getIssues();
+    } else {
+        issues = getStoredIssues();
+    }
 
     // Search
 
@@ -440,4 +456,61 @@ function escapeHTML(value) {
 // INITIAL RENDER
 // =========================================
 
-renderIssues();
+function initializeIssues() {
+    try {
+        renderIssues();
+    } catch (error) {
+        console.error("Unable to render issues", error);
+
+        const issues = (JSON.parse(localStorage.getItem("campusLensIssues") || "[]"))
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        issuesList.innerHTML = "";
+        resultsCount.textContent = `${issues.length} ${issues.length === 1 ? "issue" : "issues"}`;
+
+        if (issues.length === 0) {
+            issuesEmpty.classList.add("visible");
+            return;
+        }
+
+        issuesEmpty.classList.remove("visible");
+
+        issues.forEach((issue) => {
+            const card = document.createElement("article");
+            card.className = "issue-card";
+            card.dataset.issueId = issue.id;
+            card.innerHTML = `
+                <div class="issue-main">
+                    <div class="issue-card-top">
+                        <span class="issue-status ${issue.status}">${statusNames[issue.status] || issue.status}</span>
+                        <span class="issue-severity">
+                            <span class="issue-severity-dot ${issue.severity}"></span>
+                            ${issue.severity}
+                        </span>
+                    </div>
+                    <h3>${escapeHTML(issue.title)}</h3>
+                    <p class="issue-card-description">${escapeHTML(issue.description)}</p>
+                    <div class="issue-meta">
+                        <span>⌖ ${locationNames[issue.location] || issue.location}</span>
+                        <span># ${categoryNames[issue.category] || issue.category}</span>
+                        <span>${formatTime(issue.createdAt)}</span>
+                    </div>
+                </div>
+                <div class="issue-actions">
+                    <span class="issue-reports">${issue.reports || 1} ${(issue.reports || 1) === 1 ? "student" : "students"}</span>
+                    <button class="confirm-button" data-id="${issue.id}">I've experienced this</button>
+                </div>
+            `;
+            issuesList.appendChild(card);
+        });
+    }
+}
+
+window.renderIssues = renderIssues;
+window.initializeIssues = initializeIssues;
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeIssues);
+} else {
+    initializeIssues();
+}

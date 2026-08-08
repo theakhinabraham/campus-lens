@@ -133,27 +133,20 @@
                         ☰
                     </button>
 
-                    <button
-                        class="notification-button"
-                        aria-label="Notifications"
-                    >
-                        ♢
-                    </button>
-
 
                     <div class="user-profile">
 
-                        <div class="user-avatar">
+                        <div class="user-avatar" data-user-initials>
                             AA
                         </div>
 
                         <div class="user-info">
 
-                            <span class="user-name">
+                            <span class="user-name" data-user-name>
                                 Akhin Abraham
                             </span>
 
-                            <span class="user-role">
+                            <span class="user-role" data-user-role>
                                 Student
                             </span>
 
@@ -299,6 +292,58 @@
     <script src="../js/data.js"></script>
     <script src="../js/app.js"></script>
     <script src="../js/student/reports.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const reportsList = document.getElementById("reportsList");
+            const reportsEmpty = document.getElementById("reportsEmpty");
+            const totalReports = document.getElementById("totalReports");
+            const activeReports = document.getElementById("activeReports");
+            const resolvedReports = document.getElementById("resolvedReports");
+            if (!reportsList || !reportsEmpty || !totalReports || !activeReports || !resolvedReports) return;
+            try {
+                const currentUser = getCurrentUser().name;
+                const reports = JSON.parse(localStorage.getItem("campusLensIssues") || "[]")
+                    .filter(issue => issue.reportedBy === currentUser)
+                    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                totalReports.textContent = reports.length;
+                activeReports.textContent = reports.filter(issue => issue.status === "reported" || issue.status === "investigating" || issue.status === "in_progress").length;
+                resolvedReports.textContent = reports.filter(issue => issue.status === "resolved").length;
+                reportsList.innerHTML = "";
+                if (reports.length === 0) {
+                    reportsEmpty.classList.add("visible");
+                    return;
+                }
+                reportsEmpty.classList.remove("visible");
+                reports.forEach((issue) => {
+                    const card = document.createElement("article");
+                    card.className = "report-card";
+                    card.dataset.issueId = issue.id;
+                    card.innerHTML = `
+                        <div>
+                            <div class="issue-card-top">
+                                <span class="issue-status ${issue.status}">${issue.status}</span>
+                                <span class="issue-severity"><span class="issue-severity-dot ${issue.severity}"></span>${issue.severity}</span>
+                            </div>
+                            <h3>${issue.title}</h3>
+                            <p class="report-card-description">${issue.description}</p>
+                            <div class="report-meta">
+                                <span>⌖ ${issue.location}</span>
+                                <span># ${issue.category}</span>
+                                <span>${issue.reports || 1} ${(issue.reports || 1) === 1 ? "student affected" : "students affected"}</span>
+                            </div>
+                        </div>
+                        <div class="report-card-side">
+                            <span class="report-date">Reported ${new Date(issue.createdAt).toLocaleDateString()}</span>
+                            <span>→</span>
+                        </div>
+                    `;
+                    reportsList.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Reports fallback failed", error);
+            }
+        });
+    </script>
 
 </body>
 

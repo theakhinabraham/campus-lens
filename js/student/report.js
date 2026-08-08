@@ -145,7 +145,7 @@ reportForm.addEventListener("submit", (event) => {
             new Date().toISOString(),
 
         reportedBy:
-            "Akhin Abraham",
+            getCurrentUser().name,
 
         photo:
             photoInput.files[0]
@@ -166,7 +166,17 @@ reportForm.addEventListener("submit", (event) => {
 
     // Save to CampusLens data layer
 
-    CampusLens.addIssue(report);
+    try {
+        const storedIssues = JSON.parse(localStorage.getItem("campusLensIssues") || "[]");
+        storedIssues.unshift(report);
+        localStorage.setItem("campusLensIssues", JSON.stringify(storedIssues));
+    } catch (error) {
+        console.error("Unable to save issue", error);
+    }
+
+    if (CampusLens?.addIssue) {
+        CampusLens.addIssue(report);
+    }
 
 
     console.log(
