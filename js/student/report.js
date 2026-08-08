@@ -1,6 +1,10 @@
 const reportForm = document.getElementById("reportForm");
-const description = document.getElementById("description");
-const characterCount = document.getElementById("characterCount");
+
+const description =
+    document.getElementById("description");
+
+const characterCount =
+    document.getElementById("characterCount");
 
 
 // =========================================
@@ -9,7 +13,8 @@ const characterCount = document.getElementById("characterCount");
 
 description.addEventListener("input", () => {
 
-    characterCount.textContent = description.value.length;
+    characterCount.textContent =
+        description.value.length;
 
 });
 
@@ -22,43 +27,78 @@ reportForm.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
-    const formData = new FormData(reportForm);
+
+    const formData =
+        new FormData(reportForm);
+
+
+    // Create the issue
 
     const report = {
 
         id: Date.now(),
 
-        category: formData.get("category"),
+        category:
+            formData.get("category"),
 
-        location: formData.get("location"),
+        location:
+            formData.get("location"),
 
-        specificLocation: formData.get("specificLocation"),
+        specificLocation:
+            formData.get("specificLocation"),
 
-        title: formData.get("title"),
+        title:
+            formData.get("title"),
 
-        description: formData.get("description"),
+        description:
+            formData.get("description"),
 
-        severity: formData.get("severity"),
+        severity:
+            formData.get("severity"),
 
-        status: "reported",
+        status:
+            "reported",
 
-        createdAt: new Date().toISOString(),
+        reports:
+            1,
 
-        reportedBy: "Akhin Abraham"
+        createdAt:
+            new Date().toISOString(),
+
+        reportedBy:
+            "Akhin Abraham"
 
     };
 
 
-    console.log("New CampusLens report:", report);
+    // Save to CampusLens data layer
 
+    CampusLens.addIssue(report);
+
+
+    console.log(
+        "Issue saved:",
+        report
+    );
+
+
+    // Success message
 
     alert(
         "Your issue has been reported successfully!"
     );
 
 
+    // Reset form
+
     reportForm.reset();
 
     characterCount.textContent = "0";
 
-}); 
+
+    // Return to dashboard
+
+    window.location.href =
+        "dashboard.html";
+
+});

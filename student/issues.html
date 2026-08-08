@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Campus Issues — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- =========================================
+             SIDEBAR
+             ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Overview
+                </div>
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">◉</span>
+                        Dashboard
+                    </a>
+
+
+                    <a
+                        href="campus.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">⌖</span>
+                        Campus
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link active"
+                    >
+                        <span class="sidebar-icon">⚠</span>
+                        Issues
+                    </a>
+
+
+                    <a
+                        href="reports.html"
+                        class="sidebar-link"
+                    >
+                        <span class="sidebar-icon">✓</span>
+                        My Reports
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+                    <span class="sidebar-icon">↪</span>
+                    Exit
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN
+             ========================================= -->
+
+        <main class="app-main">
+
+
+            <!-- HEADER -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        Campus Issues
+                    </h1>
+
+                    <p>
+                        See what's happening around campus.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AA
+                        </div>
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Akhin Abraham
+                            </span>
+
+                            <span class="user-role">
+                                Student
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 PAGE
+                 ========================================= -->
+
+            <section class="page-content">
+
+
+                <div class="issues-page">
+
+
+                    <!-- PAGE INTRO -->
+
+                    <div class="issues-intro">
+
+                        <div>
+
+                            <h2>
+                                What's happening on campus?
+                            </h2>
+
+                            <p>
+                                Explore reported issues and
+                                confirm the ones you've experienced.
+                            </p>
+
+                        </div>
+
+
+                        <a
+                            href="report.html"
+                            class="btn btn-primary"
+                        >
+                            + Report an Issue
+                        </a>
+
+                    </div>
+
+
+                    <!-- =====================================
+                         SEARCH + FILTERS
+                         ===================================== -->
+
+                    <div class="issues-toolbar">
+
+
+                        <div class="search-wrapper">
+
+                            <span class="search-icon">
+                                ⌕
+                            </span>
+
+                            <input
+                                type="search"
+                                id="issueSearch"
+                                placeholder="Search campus issues..."
+                            >
+
+                        </div>
+
+
+                        <select id="categoryFilter">
+
+                            <option value="all">
+                                All categories
+                            </option>
+
+                            <option value="infrastructure">
+                                Infrastructure
+                            </option>
+
+                            <option value="wifi">
+                                Wi-Fi / Network
+                            </option>
+
+                            <option value="cleanliness">
+                                Cleanliness
+                            </option>
+
+                            <option value="water">
+                                Water & Sanitation
+                            </option>
+
+                            <option value="electricity">
+                                Electricity
+                            </option>
+
+                            <option value="ac">
+                                Air Conditioning
+                            </option>
+
+                            <option value="cafeteria">
+                                Cafeteria
+                            </option>
+
+                            <option value="accessibility">
+                                Accessibility
+                            </option>
+
+                        </select>
+
+
+                        <select id="locationFilter">
+
+                            <option value="all">
+                                All locations
+                            </option>
+
+                            <option value="block-a">
+                                Block A
+                            </option>
+
+                            <option value="block-b">
+                                Block B
+                            </option>
+
+                            <option value="block-c">
+                                Block C
+                            </option>
+
+                            <option value="library">
+                                Library
+                            </option>
+
+                            <option value="cafeteria">
+                                Cafeteria
+                            </option>
+
+                            <option value="auditorium">
+                                Auditorium
+                            </option>
+
+                            <option value="sports">
+                                Sports Complex
+                            </option>
+
+                        </select>
+
+
+                        <select id="statusFilter">
+
+                            <option value="all">
+                                All statuses
+                            </option>
+
+                            <option value="reported">
+                                Reported
+                            </option>
+
+                            <option value="investigating">
+                                Investigating
+                            </option>
+
+                            <option value="resolved">
+                                Resolved
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- RESULTS HEADER -->
+
+                    <div class="issues-results-header">
+
+                        <span id="resultsCount">
+                            0 issues
+                        </span>
+
+
+                        <select id="sortIssues">
+
+                            <option value="priority">
+                                Highest priority
+                            </option>
+
+                            <option value="recent">
+                                Most recent
+                            </option>
+
+                            <option value="reports">
+                                Most reported
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ISSUE LIST -->
+
+                    <div
+                        class="issues-list"
+                        id="issuesList"
+                    ></div>
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div
+                        class="issues-empty"
+                        id="issuesEmpty"
+                    >
+
+                        <div class="empty-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            No issues found
+                        </h3>
+
+                        <p>
+                            Try changing your filters or
+                            search for something else.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/student/issues.js"></script>
+
+</body>
+
+</html>
