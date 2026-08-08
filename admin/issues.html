@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Issues — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Administration
+                </div>
+
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link"
+                    >
+
+                        <span class="sidebar-icon">
+                            ◉
+                        </span>
+
+                        Dashboard
+
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link active"
+                    >
+
+                        <span class="sidebar-icon">
+                            ⚠
+                        </span>
+
+                        Issues
+
+                    </a>
+
+
+                    <a
+                        href="analytics.html"
+                        class="sidebar-link"
+                    >
+
+                        <span class="sidebar-icon">
+                            ▥
+                        </span>
+
+                        Analytics
+
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+
+                    <span class="sidebar-icon">
+                        ↪
+                    </span>
+
+                    Exit
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="app-main">
+
+
+            <!-- HEADER -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        Issues
+                    </h1>
+
+                    <p>
+                        Review and manage reported campus problems.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AD
+                        </div>
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Campus Admin
+                            </span>
+
+                            <span class="user-role">
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- CONTENT -->
+
+            <section class="page-content">
+
+
+                <div class="admin-issues-page">
+
+
+                    <!-- PAGE INTRO -->
+
+                    <div class="admin-page-intro">
+
+                        <div>
+
+                            <h2>
+                                All issues
+                            </h2>
+
+                            <p>
+                                Manage every issue reported by students.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOOLBAR -->
+
+                    <div class="issues-toolbar">
+
+
+                        <!-- SEARCH -->
+
+                        <div class="issue-search">
+
+                            <span>
+                                ⌕
+                            </span>
+
+                            <input
+                                type="search"
+                                id="issueSearch"
+                                placeholder="Search issues..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- FILTERS -->
+
+                        <div class="issue-filters">
+
+                            <button
+                                class="issue-filter active"
+                                data-status="all"
+                            >
+                                All
+                            </button>
+
+
+                            <button
+                                class="issue-filter"
+                                data-status="reported"
+                            >
+                                Reported
+                            </button>
+
+
+                            <button
+                                class="issue-filter"
+                                data-status="investigating"
+                            >
+                                Investigating
+                            </button>
+
+
+                            <button
+                                class="issue-filter"
+                                data-status="in_progress"
+                            >
+                                In Progress
+                            </button>
+
+
+                            <button
+                                class="issue-filter"
+                                data-status="resolved"
+                            >
+                                Resolved
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESULTS -->
+
+                    <div class="issues-results-header">
+
+                        <span id="issueCount">
+                            0 issues
+                        </span>
+
+
+                        <select id="severityFilter">
+
+                            <option value="all">
+                                All severities
+                            </option>
+
+                            <option value="high">
+                                High severity
+                            </option>
+
+                            <option value="medium">
+                                Medium severity
+                            </option>
+
+                            <option value="low">
+                                Low severity
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ISSUE LIST -->
+
+                    <div
+                        class="admin-issue-list"
+                        id="adminIssueList"
+                    ></div>
+
+
+                    <!-- EMPTY STATE -->
+
+                    <div
+                        class="admin-issues-empty"
+                        id="adminIssuesEmpty"
+                    >
+
+                        <div class="empty-icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            No issues found
+                        </h3>
+
+                        <p>
+                            Try changing your search or filters.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/admin/issues.js"></script>
+
+</body>
+
+</html>

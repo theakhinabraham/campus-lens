@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Issue Details — CampusLens</title>
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages.css">
+
+</head>
+
+
+<body>
+
+    <div class="app">
+
+
+        <!-- =========================================
+             SIDEBAR
+             ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-brand">
+
+                <span class="brand-mark">
+                    C
+                </span>
+
+                <span>
+                    CampusLens
+                </span>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    Administration
+                </div>
+
+
+                <nav class="sidebar-nav">
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link"
+                    >
+
+                        <span class="sidebar-icon">
+                            ◉
+                        </span>
+
+                        Dashboard
+
+                    </a>
+
+
+                    <a
+                        href="issues.html"
+                        class="sidebar-link active"
+                    >
+
+                        <span class="sidebar-icon">
+                            ⚠
+                        </span>
+
+                        Issues
+
+                    </a>
+
+
+                    <a
+                        href="analytics.html"
+                        class="sidebar-link"
+                    >
+
+                        <span class="sidebar-icon">
+                            ▥
+                        </span>
+
+                        Analytics
+
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="../index.html"
+                    class="sidebar-link"
+                >
+
+                    <span class="sidebar-icon">
+                        ↪
+                    </span>
+
+                    Exit
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =========================================
+             MAIN
+             ========================================= -->
+
+        <main class="app-main">
+
+
+            <!-- HEADER -->
+
+            <header class="app-header">
+
+                <div class="header-title">
+
+                    <h1>
+                        Issue Details
+                    </h1>
+
+                    <p>
+                        Review and manage this campus issue.
+                    </p>
+
+                </div>
+
+
+                <div class="header-actions">
+
+                    <button
+                        class="notification-button"
+                        aria-label="Notifications"
+                    >
+                        ♢
+                    </button>
+
+
+                    <div class="user-profile">
+
+                        <div class="user-avatar">
+                            AD
+                        </div>
+
+
+                        <div class="user-info">
+
+                            <span class="user-name">
+                                Campus Admin
+                            </span>
+
+                            <span class="user-role">
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================================
+                 CONTENT
+                 ========================================= -->
+
+            <section class="page-content">
+
+
+                <div class="admin-issue-detail">
+
+
+                    <!-- BACK -->
+
+                    <a
+                        href="issues.html"
+                        class="back-link"
+                    >
+
+                        ← Back to issues
+
+                    </a>
+
+
+                    <!-- ISSUE HEADER -->
+
+                    <div
+                        class="issue-detail-header"
+                        id="issueDetailHeader"
+                    >
+
+                        <!-- JavaScript -->
+
+                    </div>
+
+
+                    <!-- CONTENT GRID -->
+
+                    <div class="issue-detail-grid">
+
+
+                        <!-- =================================
+                             MAIN INFORMATION
+                             ================================= -->
+
+                        <div class="issue-detail-main">
+
+
+                            <!-- DESCRIPTION -->
+
+                            <section class="admin-detail-card">
+
+                                <div class="admin-detail-card-title">
+                                    Description
+                                </div>
+
+
+                                <div
+                                    class="issue-description"
+                                    id="issueDescription"
+                                ></div>
+
+                            </section>
+
+
+                            <!-- LOCATION -->
+
+                            <section class="admin-detail-card">
+
+                                <div class="admin-detail-card-title">
+                                    Location
+                                </div>
+
+
+                                <div
+                                    class="issue-location"
+                                    id="issueLocation"
+                                ></div>
+
+                            </section>
+
+
+                            <!-- REPORT DETAILS -->
+
+                            <section class="admin-detail-card">
+
+                                <div class="admin-detail-card-title">
+                                    Report information
+                                </div>
+
+
+                                <div
+                                    class="issue-information"
+                                    id="issueInformation"
+                                ></div>
+
+                            </section>
+
+
+                        </div>
+
+
+                        <!-- =================================
+                             SIDEBAR
+                             ================================= -->
+
+                        <aside class="issue-detail-sidebar">
+
+
+                            <!-- AFFECTED -->
+
+                            <section class="admin-detail-card">
+
+                                <div class="admin-detail-card-title">
+                                    Student impact
+                                </div>
+
+
+                                <div
+                                    class="impact-number"
+                                    id="impactNumber"
+                                >
+                                    0
+                                </div>
+
+
+                                <div class="impact-label">
+                                    students affected
+                                </div>
+
+                            </section>
+
+
+                            <!-- STATUS -->
+
+                            <section class="admin-detail-card">
+
+                                <div class="admin-detail-card-title">
+                                    Update status
+                                </div>
+
+
+                                <div
+                                    class="status-options"
+                                    id="statusOptions"
+                                >
+
+                                    <label class="status-option">
+
+                                        <input
+                                            type="radio"
+                                            name="issueStatus"
+                                            value="reported"
+                                        >
+
+                                        <span class="status-option-content">
+
+                                            <span class="status-option-dot reported"></span>
+
+                                            <span>
+
+                                                <strong>
+                                                    Reported
+                                                </strong>
+
+                                                <small>
+                                                    Issue has been submitted
+                                                </small>
+
+                                            </span>
+
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="status-option">
+
+                                        <input
+                                            type="radio"
+                                            name="issueStatus"
+                                            value="investigating"
+                                        >
+
+                                        <span class="status-option-content">
+
+                                            <span class="status-option-dot investigating"></span>
+
+                                            <span>
+
+                                                <strong>
+                                                    Investigating
+                                                </strong>
+
+                                                <small>
+                                                    Team is looking into it
+                                                </small>
+
+                                            </span>
+
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="status-option">
+
+                                        <input
+                                            type="radio"
+                                            name="issueStatus"
+                                            value="in_progress"
+                                        >
+
+                                        <span class="status-option-content">
+
+                                            <span class="status-option-dot in_progress"></span>
+
+                                            <span>
+
+                                                <strong>
+                                                    In Progress
+                                                </strong>
+
+                                                <small>
+                                                    Work has started
+                                                </small>
+
+                                            </span>
+
+                                        </span>
+
+                                    </label>
+
+
+                                    <label class="status-option">
+
+                                        <input
+                                            type="radio"
+                                            name="issueStatus"
+                                            value="resolved"
+                                        >
+
+                                        <span class="status-option-content">
+
+                                            <span class="status-option-dot resolved"></span>
+
+                                            <span>
+
+                                                <strong>
+                                                    Resolved
+                                                </strong>
+
+                                                <small>
+                                                    Issue has been fixed
+                                                </small>
+
+                                            </span>
+
+                                        </span>
+
+                                    </label>
+
+                                </div>
+
+
+                                <button
+                                    class="button button-primary status-update-button"
+                                    id="updateStatusButton"
+                                >
+
+                                    Update status
+
+                                </button>
+
+
+                                <div
+                                    class="status-update-message"
+                                    id="statusUpdateMessage"
+                                ></div>
+
+                            </section>
+
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="../js/data.js"></script>
+    <script src="../js/admin/issue.js"></script>
+
+</body>
+
+</html>

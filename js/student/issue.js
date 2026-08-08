@@ -31,7 +31,7 @@ const description =
         "issueDescription"
     );
 
-const location =
+const locationElement =
     document.getElementById(
         "issueLocation"
     );
@@ -264,7 +264,7 @@ description.textContent =
 // LOCATION
 // =========================================
 
-location.innerHTML = `
+locationElement.innerHTML = `
 
     <div class="location-icon">
         ⌖
